@@ -1,89 +1,93 @@
 <p align="center"><img src="art/banner-2x.png"></p>
 
-## Introduction
+## المقدمة
 
-This repository serves as my way to help me setup and maintain my Mac. It takes the effort out of installing everything manually. Everything needed to install my preferred setup of macOS is detailed in this readme. Feel free to explore, learn and copy parts for your own dotfiles. Enjoy!
+يعتبر هذا المستودع وسيلتي لمساعدتي في إعداد وصيانة نظام macOS على جهازي. يقوم هذا المستودع بتسهيل عملية التثبيت عن طريق القيام بكل شيء يدويًا. يتم تفصيل كل ما يلزم لتثبيت نظام macOS بالإعدادات المفضلة بالنسبة لي في هذا الوثيقة. لا تتردد في استكشاف المحتوى والتعلم منه ونسخ أجزاء منه لاستخدامها في ملفات تكوين النظام الخاصة بك. استمتع!
 
-📖 - [Read the blog post](https://driesvints.com/blog/getting-started-with-dotfiles)  
-📺 - [Watch the screencast on Laracasts](https://laracasts.com/series/guest-spotlight/episodes/1)  
-💡 - [Learn how to build your own dotfiles](https://github.com/driesvints/dotfiles#your-own-dotfiles)
+📖 - [اقرأ مقال المدوّنة](https://driesvints.com/blog/getting-started-with-dotfiles)  
+📺 - [شاهد الفيديو على Laracasts](https://laracasts.com/series/guest-spotlight/episodes/1)  
+💡 - [تعلم كيف تقوم ببناء ملفات تكوين النظام الخاصة بك](https://github.com/driesvints/dotfiles#your-own-dotfiles)
 
-If you find this repo useful, [consider sponsoring me](https://github.com/sponsors/driesvints) (a little bit)! ❤️ 
+إذا وجدت هذا المستودع مفيدًا، [فكّر في دعمي بمبلغ بسيط](https://github.com/sponsors/driesvints) (حتى قليلاً)! ❤️ 
 
-## A Fresh macOS Setup
+## إعداد نظام macOS الجديد
 
-These instructions are for setting up new Mac devices. Instead, if you want to get started building your own dotfiles, you can [find those instructions below](#your-own-dotfiles).
+هذه التعليمات مخصصة لإعداد أجهزة Mac جديدة. إذا كنت ترغب في البدء بإعداد ملفات تكوين النظام الخاصة بك، فيمكنك [العثور على تلك التعليمات أدناه](#your-own-dotfiles).
 
-### Backup your data
+### قم بعمل نسخ احتياطية لبياناتك
 
-If you're migrating from an existing Mac, you should first make sure to backup all of your existing data. Go through the checklist below to make sure you didn't forget anything before you migrate.
+إذا كنت تقوم بالانتقال من جهاز Mac قديم، يجب عليك التأكد أولاً من عمل نسخ احتياطية لجميع بياناتك الحالية. قم بالتحقق من القائمة أدناه للتأكد من أنك لم تنسى شيئًا قبل الانتقال.
 
-- Did you commit and push any changes/branches to your git repositories?
-- Did you remember to save all important documents from non-iCloud directories?
-- Did you save all of your work from apps which aren't synced through iCloud?
-- Did you remember to export important data from your local database?
-- Did you update [mackup](https://github.com/lra/mackup) to the latest version and ran `mackup backup`?
+- هل قمت بتأكيد ورفع أي تغييرات/فروع على مستودعات git الخاصة بك؟
+- هل تذكرت أن تحفظ جميع المستندات الهامة من المجلدات التي ليست على iCloud؟
+- هل قمت بحفظ جميع أعمالك من التطبيقات التي لا تتم مزامنتها عبر iCloud؟
+- هل تذكرت أن تقوم بتصدير البيانات الهامة من قاعدة البيانات المحلية؟
+- هل قمت بتحديث [mackup](https://github.com/lra/mackup) إلى أحدث إصدار وقمت بتشغيل `mackup backup`؟
 
-### Setting up your Mac
+### إعداد Mac الخاص بك
 
-After backing up your old Mac you may now follow these install instructions to setup a new one.
+بعد نسخ احتياطي لجهاز Mac القديم، يمكنك الآن اتباع هذه التعليمات لإعداد جهاز جديد.
 
-1. Update macOS to the latest version through system preferences
-2. [Generate a new public and private SSH key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) by running:
+1. قم بتحديث macOS إلى أحدث إصدار من خلال تفضيلات النظام
+2. [قم بإنشاء مفتاح SSH عام وخاص جديد](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) عن طريق تشغيل الأمر التالي:
 
    ```zsh
    curl https://raw.githubusercontent.com/driesvints/dotfiles/HEAD/ssh.sh | sh -s "<your-email-address>"
    ```
 
-3. Clone this repo to `~/.dotfiles` with:
+3. استنسخ هذا المستودع إلى `~/.dotfiles` باستخدام الأمر:
 
     ```zsh
     git clone --recursive git@github.com:driesvints/dotfiles.git ~/.dotfiles
     ```
 
-4. Run the installation with:
+4. قم بتشغيل عملية التثبيت باستخدام الأمر:
 
     ```zsh
     cd ~/.dotfiles && ./fresh.sh
     ```
 
-5. Start `Herd.app` and run its install process
-6. After mackup is synced with your cloud storage, restore preferences by running `mackup restore`
-7. Restart your computer to finalize the process
+5. قم بتشغيل `Herd.app` وقم بتشغيل عملية التثبيت الخاصة به
+6. بعد مزامنة mackup مع تخزين السحابة الخاص بك، استعد الإعدادات باستخدام الأمر `mackup restore`
+7. أعد تشغيل جهاز الكمبيوتر الخاص بك لإتمام العملية
 
-Your Mac is now ready to use!
+أصبح جهاز Mac الخاص بك جاهز للاستخدام الآن!
 
-> 💡 You can use a different location than `~/.dotfiles` if you want. Make sure you also update the reference in the [`.zshrc`](./.zshrc#L2) file.
+> 💡 يمكنك استخدام موقع آخر للموقع من `~/.dotfiles` إذا كنت ترغب. تأكد أيضًا من تحديث المرجع في ملف [`.zshrc`](./.zshrc#L2).
 
-### Cleaning your old Mac (optionally)
+### تنظيف جهاز Mac القديم (اخت
 
-After you've set up your new Mac you may want to wipe and clean install your old Mac. Follow [this article](https://support.apple.com/guide/mac-help/erase-and-reinstall-macos-mh27903/mac) to do that. Remember to [backup your data](#backup-your-data) first!
+ياريًا)
 
-## Your Own Dotfiles
+بعد إعداد جهاز Mac الجديد، قد ترغب في مسح وإعادة تثبيت جهاز Mac القديم. قم باتباع [هذا المقال](https://support.apple.com/guide/mac-help/erase-and-reinstall-macos-mh27903/mac) للقيام بذلك. تذكر أن تقوم بعمل [نسخ احتياطي لبياناتك](#backup-your-data) أولاً!
 
-**Please note that the instructions below assume you already have set up Oh My Zsh so make sure to first [install Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh#getting-started) before you continue.**
+## ملفات تكوين النظام الخاصة بك
 
-If you want to start with your own dotfiles from this setup, it's pretty easy to do so. First of all you'll need to fork this repo. After that you can tweak it the way you want.
+**يرجى ملاحظة أن التعليمات أدناه تفترض أنك قد قمت بإعداد Oh My Zsh بالفعل، لذلك تأكد من تثبيت Oh My Zsh أولاً [من هنا](https://github.com/robbyrussell/oh-my-zsh#getting-started) قبل المتابعة.**
 
-Go through the [`.macos`](./.macos) file and adjust the settings to your liking. You can find much more settings at [the original script by Mathias Bynens](https://github.com/mathiasbynens/dotfiles/blob/master/.macos) and [Kevin Suttle's macOS Defaults project](https://github.com/kevinSuttle/MacOS-Defaults).
+إذا كنت ترغب في البدء بملفات تكوين النظام الخاصة بك باستخدام هذه المجموعة، فمن السهل فعل ذلك. أولاً وقبل كل شيء، ستحتاج إلى عمل نسخة شخصية من هذا المستودع (fork). بعد ذلك، يمكنك ضبطها كما تريد.
 
-Check out the [`Brewfile`](./Brewfile) file and adjust the apps you want to install for your machine. Use [their search page](https://formulae.brew.sh/cask/) to check if the app you want to install is available.
+تفقد محتوى الملف [`.macos`](./.macos) وقم بضبط الإعدادات حسب تفضيلاتك. يمكنك العثور على المزيد من الإعدادات في [النص البرمجي الأصلي لمؤلفه Mathias Bynens](https://github.com/mathiasbynens/dotfiles/blob/master/.macos) وفي [مشروع Kevin Suttle للإعدادات الافتراضية لنظام macOS](https://github.com/kevinSuttle/MacOS-Defaults).
 
-Check out the [`aliases.zsh`](./aliases.zsh) file and add your own aliases. If you need to tweak your `$PATH` check out the [`path.zsh`](./path.zsh) file. These files get loaded in because the `$ZSH_CUSTOM` setting points to the `.dotfiles` directory. You can adjust the [`.zshrc`](./.zshrc) file to your liking to tweak your Oh My Zsh setup. More info about how to customize Oh My Zsh can be found [here](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization).
+تفقد ملف [`Brewfile`](./Brewfile) وقم بتعديل التطبيقات التي ترغب في تثبيتها على جهازك. استخدم [صفحة البحث](https://formulae.brew.sh/cask/) للتحقق مما إذا كان التطبيق الذي ترغب في تثبيته متاحًا.
 
-When installing these dotfiles for the first time you'll need to backup all of your settings with Mackup. Install Mackup and backup your settings with the commands below. Your settings will be synced to iCloud so you can use them to sync between computers and reinstall them when reinstalling your Mac. If you want to save your settings to a different directory or different storage than iCloud, [checkout the documentation](https://github.com/lra/mackup/blob/master/doc/README.md#storage). Also make sure your `.zshrc` file is symlinked from your dotfiles repo to your home directory. 
+تفقد ملف [`aliases.zsh`](./aliases.zsh) وأضف الأوامر المخصصة الخاصة بك. إذا كنت بحاجة إلى تعديل `$PATH` الخاص بك، تفقد ملف [`path.zsh`](./path.zsh). يتم تحميل هذه الملفات لأن إعداد `$ZSH_CUSTOM` يشير إلى دليل `.dotfiles`. يمكنك ضبط ملف [`.zshrc`](./.zshrc) حسب تفضيلاتك لتعديل إعدادات Oh My Zsh الخاصة بك. يمكن العثور على معلومات إضافية حول كيفية تخصيص Oh My Zsh [هنا](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization).
+
+عند تثبيت ملفات تكوين النظام هذه للمرة الأولى، ستحتاج إلى نسخ جميع إعداداتك باستخدام Mackup. قم بتثبيت Mackup واحتفظ بنسخ احتياطي للإعدادات باستخدام الأوامر أدناه. ستتم مزامنة إعداداتك مع iCloud حتى تتمكن من استخدامها لمزامنة بين الأجهزة واستعادتها عند إعادة تثبيت نظامك. إذا كنت ترغب في حفظ إعداداتك في مجلد أو تخزين مختلف عن iCloud، [شاهد الوثائق](https://github.com/lra/mackup/blob/master/doc/README.md#storage). تأكد أيضًا من ربط ملف `.zshrc` الخاص بك من مستودع ملفات تكوين النظام بمجلد المستخدم الخاص بك.
 
 ```zsh
 brew install mackup
 mackup backup
 ```
 
-You can tweak the shell theme, the Oh My Zsh settings and much more. Go through the files in this repo and tweak everything to your liking.
+يمكنك تعديل سمة الشيل وإعدادات Oh My Zsh والمزيد بشكل كامل. تفقد محتوى هذا المستودع وقم بتعديل كل شيء بحسب تفضيلاتك.
 
-Enjoy your own Dotfiles!
+تمتع بملفات تكوين النظام الخاصة بك!
 
-## Thanks To...
+## الشكر ل...
 
-I first got the idea for starting this project by visiting the [GitHub does dotfiles](https://dotfiles.github.io/) project. Both [Zach Holman](https://github.com/holman/dotfiles) and [Mathias Bynens](https://github.com/mathiasbynens/dotfiles) were great sources of inspiration. [Sourabh Bajaj](https://twitter.com/sb2nov/)'s [Mac OS X Setup Guide](http://sourabhbajaj.com/mac-setup/) proved to be invaluable. Thanks to [@subnixr](https://github.com/subnixr) for [his awesome Zsh theme](https://github.com/subnixr/minimal)! Thanks to [Caneco](https://twitter.com/caneco) for the header in this readme. And lastly, I'd like to thank [Emma Fabre](https://twitter.com/anahkiasen) for [her excellent presentation on Homebrew](https://speakerdeck.com/anahkiasen/a-storm-homebrewin) which made me migrate a lot to a [`Brewfile`](./Brewfile) and [Mackup](https://github.com/lra/mackup).
+لقد حصلت لأول مرة على فكرة بدء هذا المشروع من خلال زيارة مشروع [GitHub does dotfiles](https://dotfiles.github.io/). كلاً من [Zach Holman](https://github.com/holman/dotfiles) و [Mathias Bynens](https://github.com/mathiasbynens/dotfiles) كانا مصدر إلهام كبير. أثبتت [دليل إعداد Mac OS X](http://sourabhbajaj.com/mac-setup/) لـ [Sourabh Bajaj](https://twitter.com
 
-In general, I'd like to thank every single one who open-sources their dotfiles for their effort to contribute something to the open-source community.
+/sb2nov/) جدواه الفعلية. شكراً لـ [@subnixr](https://github.com/subnixr) لـ [سمته الرائعة للشيل](https://github.com/subnixr/minimal)! شكراً لـ [Caneco](https://twitter.com/caneco) لتصميم العنوان في هذا الوثيقة. وأخيرًا، أود أن أشكر [Emma Fabre](https://twitter.com/anahkiasen) على [عرضها الممتاز عن Homebrew](https://speakerdeck.com/anahkiasen/a-storm-homebrewin) الذي دفعني إلى الانتقال إلى [`Brewfile`](./Brewfile) و[Mackup](https://github.com/lra/mackup).
+
+وبشكل عام، أود أن أشكر كل شخص يشارك ملفات تكوين النظام الخاصة به في مشروع مفتوح المصدر لجهودهم في المساهمة في المجتمع ذو الشفافية.
