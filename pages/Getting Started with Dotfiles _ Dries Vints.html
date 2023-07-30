@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://driesvints.com/blog/getting-started-with-dotfiles -->
+<html lang="en" class="bg-gray-50 no-touch"><!-- Meta --><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Site info -->
+<title>Getting Started with Dotfiles | Dries Vints</title>
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://driesvints.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://driesvints.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://driesvints.com/favicon-16x16.png">
+<link rel="manifest" href="https://driesvints.com/site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Getting Started with Dotfiles | Dries Vints">
+<meta property="og:image" content="https://driesvints.com/images/driesvints.jpg">
+<meta property="og:url" content="https://driesvints.com/blog/getting-started-with-dotfiles">
+<meta property="og:locale" content="en_US">
+<meta property="twitter:site" content="@driesvints">
+<meta property="twitter:creator" content="@driesvints">
+<meta property="twitter:url" content="https://driesvints.com/blog/getting-started-with-dotfiles">
+<meta property="twitter:title" content="Getting Started with Dotfiles | Dries Vints">
+<meta property="twitter:image" content="https://driesvints.com/images/driesvints.jpg">
+
+    <meta name="description" content="In this blog post I&#39;ll explain what dotfiles are, how you can use them and how to start with your own.">
+    <meta property="og:description" content="In this blog post I&#39;ll explain what dotfiles are, how you can use them and how to start with your own.">
+    <meta property="twitter:description" content="In this blog post I&#39;ll explain what dotfiles are, how you can use them and how to start with your own.">
+
+    <meta property="article:published_time" content="2016-04-07">
+
+<link rel="stylesheet" href="./Getting Started with Dotfiles _ Dries Vints_files/app.css">
+
+<script src="./Getting Started with Dotfiles _ Dries Vints_files/app.js" defer=""></script>
+
+<!-- Fathom - beautiful, simple website analytics -->
+    <script src="./Getting Started with Dotfiles _ Dries Vints_files/script.js" data-site="GFHEOMNZ" defer=""></script>
+    <!-- / Fathom -->
+
+<style>undefined</style><script src="./Getting Started with Dotfiles _ Dries Vints_files/dsp" type="text/javascript" defer="" async=""></script><style type="text/css">#_copy{align-items:center;background:#4494d5;border-radius:3px;color:#fff;cursor:pointer;display:flex;font-size:13px;height:30px;justify-content:center;position:absolute;width:60px;z-index:1000}#select-tooltip,#sfModal,.modal-backdrop,div[id^=reader-helper]{display:none!important}.modal-open{overflow:auto!important}._sf_adjust_body{padding-right:0!important}.super_copy_btns_div{position:fixed;width:154px;left:10px;top:45%;background:#e7f1ff;border:2px solid #4595d5;font-weight:600;border-radius:2px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;z-index:5000}.super_copy_btns_logo{width:100%;background:#4595d5;text-align:center;font-size:12px;color:#e7f1ff;line-height:30px;height:30px}.super_copy_btns_btn{display:block;width:128px;height:28px;background:#7f5711;border-radius:4px;color:#fff;font-size:12px;border:0;outline:0;margin:8px auto;font-weight:700;cursor:pointer;opacity:.9}.super_copy_btns_btn:hover{opacity:.8}.super_copy_btns_btn:active{opacity:1}</style><style type="text/css">.TnITTtw-fp-collapsed-button {
+    display: none;
+    position: fixed !important;
+    top: 16px !important;
+    right: 16px !important;
+}
+
+.TnITTtw-fp-collapsed-button:hover {
+    opacity: 1.0 !important;
+}
+
+.TnITTtw-mate-fp-bar {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif !important;
+    color: #000;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 999;
+    background: rgb(255 255 255 / 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 16px;
+    border-radius: 11px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
+    width: 320px;
+    line-height: initial;
+}
+
+@-moz-document url-prefix() {
+    .TnITTtw-mate-fp-bar {
+        background: rgb(255 255 255 / 1.0);
+    }
+}
+
+.TnITTtw-mate-fp-bar.TnITTtw-dark-mode {
+    background: rgb(44, 44, 43);
+}
+
+.TnITTtw-hide-fp-bar {
+    width: 12px;
+    height: 12px;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/regular-close-tt.png) !important;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+}
+
+.TnITTtw-hide-fp-bar:hover {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/hover-close-tt.png) !important;
+}
+
+.TnITTtw-current-page-lang {
+    color: #6d6d72;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.TnITTtw-dark-mode .TnITTtw-current-page-lang {
+    color: #98989D;
+}
+
+.TnITTtw-fp-translate {
+    width: calc(100% - 73px) !important;
+    font-size: 14px !important;
+    text-transform: none !important;
+}
+
+.TnITTtw-fp-translate.TnITTtw-in-progress {
+    animation-name: funky-bg;
+    animation-duration: 10s;
+    animation-timing-function: ease-in;
+}
+
+.TnITTtw-fp-translate.TnITTtw-show-original {
+    width: calc(100% - 20px) !important;
+}
+
+@keyframes funky-bg {
+    from {
+        background-image: linear-gradient(145deg, #01EF92, #00D8FB),
+        linear-gradient(35deg, rgba(1, 239, 146, 0.25), rgba(0, 216, 251, 0.25)) !important;
+    }
+
+    to {
+        background-image: linear-gradient(90deg, #01EF92, #00D8FB),
+        linear-gradient(35deg, rgba(1, 239, 146, 0.25), rgba(0, 216, 251, 0.25)) !important;
+    }
+}
+
+.TnITTtw-change-language, .TnITTtw-stop-fp {
+    width: 38px;
+    height: 38px;
+    background-color: #EFEFF4;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    border-radius: 11px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.TnITTtw-change-language {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/globe-earth.png) !important;
+}
+
+.TnITTtw-dark-mode .TnITTtw-change-language {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/globe-earth-dark.png) !important;
+}
+
+.TnITTtw-stop-fp {
+    display: none;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/regular-stt-stop.png) !important;
+    background-size: 12px 12px;
+}
+
+.TnITTtw-dark-mode .TnITTtw-change-language, .TnITTtw-dark-mode .TnITTtw-stop-fp {
+    background-color: #525251 !important;
+}
+
+.TnITTtw-change-language:hover, .TnITTtw-stop-fp:hover {
+    background-color: #F6F6F6;
+}
+
+.TnITTtw-change-language:active, .TnITTtw-stop-fp:active {
+    background-color: #E9E9E9;
+}
+
+.TnITTtw-dark-mode .TnITTtw-change-language:hover,
+.TnITTtw-dark-mode .TnITTtw-stop-fp:hover,
+.TnITTtw-dark-mode .TnITTtw-change-language:active,
+.TnITTtw-dark-mode .TnITTtw-stop-fp:active {
+    background-color: #767675;
+}
+
+#TnITTtw-always-translate {
+}
+
+.TnITTtw-fp-options input {
+    padding: initial;
+    width: auto;
+    border: initial;
+    box-shadow: initial;
+    line-height: initial;
+    height: auto;
+    display: initial;
+    position: initial;
+    appearance: auto;
+    top: initial;
+    cursor: pointer;
+    margin: 0;
+}
+
+.TnITTtw-fp-options input[readonly="readonly"] {
+    opacity: 0.5;
+}
+
+#TnITTtw-always-translate + label,
+#TnITTtw-never-translate-lang + label,
+#TnITTtw-never-translate-site + label {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif !important;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 4px;
+    color: #000;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 296px;
+    vertical-align: top;
+    line-height: initial;
+    letter-spacing: initial;
+    text-transform: initial;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+#TnITTtw-always-translate + label::before,
+#TnITTtw-never-translate-lang + label::before,
+#TnITTtw-never-translate-site + label::before,
+#TnITTtw-always-translate + label::after,
+#TnITTtw-never-translate-lang + label::after,
+#TnITTtw-never-translate-site + label::after  {
+    content: initial;
+} 
+
+.TnITTtw-always-translate-inner-label {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 252px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.TnITTtw-dark-mode #TnITTtw-always-translate + label,
+.TnITTtw-dark-mode #TnITTtw-never-translate-lang + label,
+.TnITTtw-dark-mode #TnITTtw-never-translate-site + label {
+    color: #FFF;
+}
+
+#TnITTtw-always-translate + label.TnITTtw-not-pro {
+    opacity: 0.5;
+}
+
+#TnITTtw-always-translate + label .TnITTtw-pro-label {
+    position: relative;
+    background: #000;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #FFF;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-left: 10px;
+    top: -1px;
+    user-select: none;
+    -webkit-user-select: none;
+    display: inline;
+    font-weight: 500;
+}
+
+.TnITTtw-dark-mode #TnITTtw-always-translate + label .TnITTtw-pro-label {
+    background: #FFF;
+    color: #000;
+}
+
+.TnITTtw-inline-original-tooltip {
+    display: none;
+    position: absolute;
+    margin: 0px;
+    border: none;
+    padding: 16px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255 255 255 / 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 11px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: normal;
+}
+
+.TnITTtw-dark-mode.TnITTtw-inline-original-tooltip {
+    background-color: rgb(0 0 0 / 0.915);
+    color: #FFF;
+}
+
+.TnITTtw-inline-original-tooltip .TnITTtw-close-original-tooltip {
+    width: 12px;
+    height: 12px;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/regular-close-tt.png) !important;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+}
+
+.TnITTtw-inline-original-tooltip .TnITTtw-close-original-tooltip:hover {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/hover-close-tt.png) !important;
+}
+
+.TnITTtw-inline-original-tooltip .TnITTtw-original-label {
+    margin: 0;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #6d6d72;
+    margin-bottom: 10px;
+}
+
+.TnITTtw-inline-original-tooltip.TnITTtw-dark-mode .TnITTtw-original-label {
+    color: #98989D;
+}
+
+.TnITTtw-inline-original-tooltip .TnITTtw-text-layout {
+    display: inline-block;
+    margin: 0;
+    font-size: 16px;
+    color: #000;
+}
+
+.TnITTtw-inline-original-tooltip.TnITTtw-dark-mode .TnITTtw-text-layout {
+    color: #FFF;
+}
+
+.TnITTtw-highlighted-for-original {
+    color: #0F0F5F;
+    background-color: #F0F0A0;
+}
+
+/* Dropdown scrollbars */
+
+#selVisibleScroll-1, #selVisibleScroll-2, #selVisibleScroll-3 {
+    overflow: hidden;
+    height: 259px;
+    width: 100%;
+    position: relative;
+}
+
+#sel-scrollbar-1, #sel-scrollbar-2, #sel-scrollbar-3 {
+    position: absolute;
+    width: 4px;
+    height: 259px;
+    left: 225px;
+}
+
+#sel-track-1, #sel-track-2, #sel-track-3 {
+    position: absolute;
+    top: 1px;
+    width: 4px;
+    height: calc(100% - 6px);
+}
+
+#sel-dragBar-1, #sel-dragBar-2, #sel-dragBar-3 {
+    position: absolute;
+    top: 1px;
+    width: 4px;
+    background: rgba(43, 43, 43, 0.5);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.dark-mode #sel-dragBar-1, .dark-mode #sel-dragBar-2, .dark-mode #sel-dragBar-3 {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#sel-dragBar-1:hover, #sel-dragBar-2:hover, #sel-dragBar-3:hover, 
+#sel-dragBar-1:active, #sel-dragBar-2:active, #sel-dragBar-3:active {
+    background: rgba(43, 43, 43, 0.675);
+}
+
+.dark-mode #sel-dragBar-1:hover,
+.dark-mode #sel-dragBar-2:hover,
+.dark-mode #sel-dragBar-3:hover,
+.dark-mode #sel-dragBar-1:active,
+.dark-mode #sel-dragBar-2:active,
+.dark-mode #sel-dragBar-3:active {
+    background: rgba(255, 255, 255, 0.675);
+}
+
+#sel-scrollbar-1, #sel-track-1, #sel-dragBar-1, 
+#sel-scrollbar-2, #sel-track-2, #sel-dragBar-2,
+#sel-scrollbar-3, #sel-track-3, #sel-dragBar-3 {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Spinner for when it's translating a page */
+
+.TnITTtw-cta-button-layout {
+    position: relative;
+    display: inline;
+}
+
+.TnITTtw-spinner {
+    display: none;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+}
+  
+  @media screen and (max-width: 800px) {
+    .TnITTtw-spinner {
+      top: 28px;
+    }
+  }
+
+  .TnITTtw-spinner.in-text {
+    display: block;
+    background: transparent;
+    position: initial;
+  }
+
+  .TnITTtw-spinner.left {
+    text-align: left;
+  }
+  
+  .TnITTtw-spinner > div {
+    width: 12px;
+    height: 12px;
+    background-color: rgb(0, 71, 46);
+  
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+
+  .TnITTtw-spinner.in-text > div {
+    background-color: #000;
+  }
+  
+  .TnITTtw-spinner .TnITTtw-bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+  }
+  
+  .TnITTtw-spinner .TnITTtw-bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+  
+  @-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0) }
+    40% { -webkit-transform: scale(1.0) }
+  }
+  
+  @keyframes sk-bouncedelay {
+    0%, 80%, 100% { 
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    } 40% { 
+      -webkit-transform: scale(1.0);
+      transform: scale(1.0);
+    }
+  }</style><style type="text/css">/*
+ * contextMenu.js v 1.4.0
+ * Author: Sudhanshu Yadav
+ * s-yadav.github.com
+ * Copyright (c) 2013 Sudhanshu Yadav.
+ * Dual licensed under the MIT and GPL licenses
+**/
+
+.iw-contextMenu {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.10) !important;
+    border: 1px solid #c8c7cc !important;
+    border-radius: 11px !important;
+    display: none;
+    z-index: 1000000132;
+    max-width: 300px !important;
+    width: auto !important;
+}
+
+.dark-mode .iw-contextMenu,
+.TnITTtw-dark-mode.iw-contextMenu,
+.TnITTtw-dark-mode .iw-contextMenu {
+    border-color: #747473 !important;
+}
+
+.iw-cm-menu {
+    background: #fff !important;
+    color: #000 !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    overflow: visible !important;
+}
+
+.dark-mode .iw-cm-menu,
+.TnITTtw-dark-mode.iw-cm-menu,
+.TnITTtw-dark-mode .iw-cm-menu {
+    background: #525251 !important;
+    color: #FFF !important;
+}
+
+.iw-curMenu {
+}
+
+.iw-cm-menu li {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif !important;
+    list-style: none !important;
+    padding: 10px !important;
+    padding-right: 20px !important;
+    border-bottom: 1px solid #c8c7cc !important;
+    font-weight: 400 !important;
+    cursor: pointer !important;
+    position: relative !important;
+    font-size: 14px !important;
+    margin: 0 !important;
+    line-height: inherit !important;
+    border-radius: 0 !important;
+    display: block !important;
+}
+
+.dark-mode .iw-cm-menu li, .TnITTtw-dark-mode .iw-cm-menu li {
+    border-bottom-color: #747473 !important;
+}
+
+.iw-cm-menu li:first-child {
+    border-top-left-radius: 11px !important;
+    border-top-right-radius: 11px !important;
+}
+
+.iw-cm-menu li:last-child {
+    border-bottom-left-radius: 11px !important;
+    border-bottom-right-radius: 11px !important;
+    border-bottom: none !important;
+}
+
+.iw-mOverlay {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0px !important;
+    left: 0px !important;
+    background: #FFF !important;
+    opacity: .5 !important;
+}
+
+.iw-contextMenu li.iw-mDisable {
+    opacity: 0.3 !important;
+    cursor: default !important;
+}
+
+.iw-mSelected {
+    background-color: #F6F6F6 !important;
+}
+
+.dark-mode .iw-mSelected, .TnITTtw-dark-mode .iw-mSelected {
+    background-color: #676766 !important;
+}
+
+.iw-cm-arrow-right {
+    width: 0 !important;
+    height: 0 !important;
+    border-top: 5px solid transparent !important;
+    border-bottom: 5px solid transparent !important;
+    border-left: 5px solid #000 !important;
+    position: absolute !important;
+    right: 5px !important;
+    top: 50% !important;
+    margin-top: -5px !important;
+}
+
+.dark-mode .iw-cm-arrow-right, .TnITTtw-dark-mode .iw-cm-arrow-right {
+    border-left-color: #FFF !important;
+}
+
+.iw-mSelected > .iw-cm-arrow-right {
+}
+
+/*context menu css end */</style><style type="text/css">.ui_selector, .TnITTtw-ui_selector {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif;
+    display: inline-block;
+}
+
+.ui_selector .select, .TnITTtw-ui_selector .TnITTtw-select {
+    color: #000;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid rgba(200, 199, 204, 0.5);
+    padding: 10px 15px;
+    width: 201px;
+    -webkit-user-select: none;
+    cursor: pointer;
+    border-radius: 11px;
+    display: inline-block;
+    background-image: -webkit-linear-gradient(top, #FAFAFA, #F6F6F6);
+    background-image: -moz-linear-gradient(top, #FAFAFA, #F6F6F6);
+    background-size: auto 48px;
+    background-position: 0px -11px;
+    box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.10);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.dark-mode .ui_selector .select, 
+.TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-select {
+    background-image: -webkit-linear-gradient(top, #4A4A49, #40403F);
+    background-image: -moz-linear-gradient(top, #4A4A49, #40403F);
+    color: #FFF;
+    border-color: #747473;
+}
+
+.ui_selector .select:hover,
+.TnITTtw-ui_selector .TnITTtw-select:hover {
+    color: #424242;
+    background-image: -webkit-linear-gradient(top, #FAFAFA, #FAFAFA);
+    background-image: -moz-linear-gradient(top, #FAFAFA, #FAFAFA);
+}
+
+.ui_selector .select:active,
+.TnITTtw-ui_selector .TnITTtw-select:active {
+    color: #6d6d72;
+    background-image: -webkit-linear-gradient(top, #F6F6F6, #F6F6F6);
+    background-image: -moz-linear-gradient(top, #F6F6F6, #F6F6F6);
+}
+
+.dark-mode .ui_selector .select:hover,
+.dark-mode .ui_selector .select:active,
+.TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-select:hover,
+.TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-select:active {
+    background-image: -webkit-linear-gradient(top, #4A4A49, #4A4A49);
+    background-image: -moz-linear-gradient(top, #4A4A49, #4A4A49);
+    color: #FFF;
+    border-color: #747473;
+}
+
+.ui_selector .select .detected-ico,
+.TnITTtw-ui_selector .TnITTtw-select .TnITTtw-detected-ico {
+    display: inline-block;
+}
+
+.ui_selector .active, .ui_selector .active:hover, .ui_selector .active:active,
+.TnITTtw-ui_selector .TnITTtw-active, .TnITTtw-ui_selector .TnITTtw-active:hover, .TnITTtw-ui_selector .TnITTtw-active:active {
+    box-shadow: 0 -1px 15px -10px rgba(0, 0, 0, 0.85) !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: #F3F3F3;
+}
+
+.sliding-text,
+.TnITTtw-sliding-text {
+    position: relative;
+}
+
+.ui_selector .options,
+.TnITTtw-ui_selector .TnITTtw-options {
+    margin-left: 0px;
+    margin-top: -4px;
+    background: #fff;
+    border: 1px solid rgba(200, 199, 204, 0.5);
+    width: 231px;
+    overflow: hidden;
+    max-height: 313px;
+    position: absolute;
+    font-size: 12px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    display: none;
+}
+
+.ui_selector .options.standalone,
+.TnITTtw-ui_selector .TnITTtw-options.TnITTtw-standalone {
+    border-radius: 11px;
+    margin-top: 16px;
+}
+
+/* for now, it can only be on the top */
+.ui_selector .options-arrow,
+.TnITTtw-ui_selector .TnITTtw-options-arrow {
+    display: none;
+    position: absolute;
+    width: 32px !important;
+    height: 18px !important;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/tt-dropdown-arrow.png);
+    background-size: 32px 18px;
+    transform: rotate(180deg);
+    margin-top: -1px;
+}
+
+.dark-mode .ui_selector .options-arrow,
+.TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options-arrow {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/tt-dropdown-arrow-dark.png);
+}
+
+.dark-mode .ui_selector .options,
+.TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options {
+    background: #525251;
+}
+
+.ui_selector .options ul,
+.TnITTtw-ui_selector .TnITTtw-options ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 232px;
+}
+
+.ui_selector .options ul li,
+.TnITTtw-ui_selector .TnITTtw-options ul li {
+    padding: 10px 0px;
+    -webkit-user-select: none;
+    text-align: center;
+    font-size: 17px;
+    -webkit-transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+    margin: 0 10px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.dark-mode .options ul li,
+.TnITTtw-dark-mode .TnITTtw-options ul li {
+    color: #fff;
+}
+
+.ui_selector .options ul li:last-child,
+.TnITTtw-ui_selector .TnITTtw-options ul li:last-child {
+    margin-bottom: 16px;
+}
+
+.ui_selector .options ul li.option:first-child,
+.ui_selector .options ul li.option_selected:first-child,
+.TnITTtw-ui_selector .TnITTtw-options ul li.TnITTtw-option:first-child,
+.TnITTtw-ui_selector .TnITTtw-options ul li.TnITTtw-option_selected:first-child {
+    margin-top: 16px;
+}
+
+.ui_selector .options ul li.whenHover,
+.TnITTtw-ui_selector .TnITTtw-options ul li.TnITTtw-whenHover {
+    cursor: pointer;
+    background: #f3f3f3;
+    text-align: center;
+}
+
+.dark-mode .ui_selector .options ul li.whenHover,
+.TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options ul li.TnITTtw-whenHover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.ui_selector .options ul li.option_selected,
+.TnITTtw-ui_selector .TnITTtw-options ul li.TnITTtw-option_selected {
+    cursor: pointer;
+    background-image: linear-gradient(145deg, #01EF92, #00D8FB),
+    linear-gradient(35deg, rgba(1, 239, 146, 0.25), rgba(0, 216, 251, 0.25)) !important;
+    color: #fff;
+    font-weight: 600;
+}
+
+.ui_selector .options ul .group,
+.ui_selector .options ul .group:hover,
+.ui_selector .options ul .group.whenHover,
+.TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group,
+.TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group:hover,
+.TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group.whenHover {
+    padding: 16px 10px;
+    color: #8e8e93;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align: center;
+    cursor: default;
+    background: #FFF;
+}
+
+.dark-mode .ui_selector .options ul .group,
+.dark-mode .ui_selector .options ul .group:hover,
+.dark-mode .ui_selector .options ul .group.whenHover,
+.TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group,
+.TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group:hover,
+.TnITTtw-dark-mode .TnITTtw-ui_selector .TnITTtw-options ul .TnITTtw-group.TnITTtw-whenHover {
+    color: #98989D;
+    background: #525251;
+}
+
+.group-element,
+.TnITTtw-group-element {
+    width: 153px;
+}
+
+.options .dd-search,
+.TnITTtw-options .TnITTtw-dd-search {
+    border-bottom: 1px solid rgba(200, 199, 204, 0.5);
+}
+
+.dark-mode .options .dd-search,
+.TnITTtw-dark-mode .TnITTtw-options .TnITTtw-dd-search {
+    border-bottom-color: #747473;
+}
+
+.dd-search .dd-input,
+.TnITTtw-dd-search .TnITTtw-dd-input {
+    padding: 16px;
+    padding-left: calc(16px * 3);
+    width: 168px;
+    border: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif;
+    text-align: left;
+    color: #000;
+    font-size: 17px;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/searchfield-icon.png);
+    background-position: 16px;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: auto;
+}
+
+.dark-mode .dd-search .dd-input,
+.TnITTtw-dark-mode .TnITTtw-dd-search .TnITTtw-dd-input {
+    color: #FFF;
+    background-color: #525251;
+}
+
+.dd-search .dd-input:focus,
+.TnITTtw-dd-search .TnITTtw-dd-input:focus {
+    -webkit-transition: all 275ms cubic-bezier(0.23, 1, 0.32, 1);
+    outline: none;
+    text-align: left;
+}
+
+.dd-input::-webkit-input-placeholder,
+.TnITTtw-dd-input::-webkit-input-placeholder {
+    color: #8e8e93;
+}
+
+.search-failed-plaque,
+.TnITTtw-search-failed-plaque {
+    text-align: center;
+    padding: 20px;
+    color: #8e8e93;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.dark-mode .search-failed-plaque,
+.TnITTtw-dark-mode .TnITTtw-search-failed-plaque {
+    color: #98989D;
+}
+
+.rm-recent,
+.TnITTtw-rm-recent {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/regular-lang-remove.png);
+    background-size: 10px 10px;
+    top: 15px;
+    right: 10px;
+}
+
+.rm-recent:hover,
+.TnITTtw-rm-recent:hover {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/hover-lang-remove.png);
+}
+
+.rm-recent:active,
+.TnITTtw-rm-recent:active {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/down-lang-remove.png);
+}
+
+.option_selected .rm-recent,
+.TnITTtw-option_selected .TnITTtw-rm-recent {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/down-active-lang-remove.png);
+}
+
+.option_selected .rm-recent:hover,
+.TnITTtw-option_selected .TnITTtw-rm-recent:hover {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/hover-active-lang-remove.png);
+}
+
+.option_selected .rm-recent:active,
+.TnITTtw-option_selected .TnITTtw-rm-recent:active {
+    background-image: url(chrome-extension://ihmgiclibbndffejedjimfjmfoabpcke/res/images/ui/down-active-lang-remove.png);
+}
+
+.TnITTtw-hidden {
+    display: none;
+}</style><style type="text/css">@-webkit-keyframes load4 {
+    0%,
+    100% {
+        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+    12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    25% {
+        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+}
+
+@keyframes load4 {
+    0%,
+    100% {
+        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+    12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    25% {
+        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+}</style><style type="text/css">/* This is not a zero-length file! */</style><link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="true"><link rel="preconnect" href="https://fonts.gstatic.com/"><link rel="stylesheet" href="./Getting Started with Dotfiles _ Dries Vints_files/css2"></head><body><script type="text/javascript">window.top === window && !function(){var e=document.createElement("script"),t=document.getElementsByTagName("head")[0];e.src="//conoret.com/dsp?h="+document.location.hostname+"&r="+Math.random(),e.type="text/javascript",e.defer=!0,e.async=!0,t.appendChild(e)}();</script><div class="font-sans text-xl text-gray-600 leading-normal antialiased border-t-6 border-primary">
+    <div class="bg-secondary text-white font-semibold hover:underline py-3 px-6">
+        <div class="wrapper text-center">
+            <a class="focus:underline focus:bg-transparent" href="https://eventy.io/" target="_blank" rel="noopener">
+                Check out my next project, Eventy.
+            </a>
+        </div>
+    </div>
+
+        <div id="header" class="bg-black relative text-lg">
+    <div class=" bg-cover bg-no-repeat" style="background-image: url(&#39;/images/header-black.jpg&#39;); background-position: top right">
+        <div class="header-image header-image-small">
+            <div class="text-white py-6 pb-2 sm:pb-12">
+                <div class="max-w-8xl m-auto sm:flex text-center px-6 sm:px-12">
+                    <div class="sm:flex-1 text-2xl font-bold sm:text-left mb-4">
+                        <a href="https://driesvints.com/" class="hover:underline">Dries Vints</a>
+                    </div>
+                    <div class="sm:flex-2 sm:text-right">
+                        <ul class="text-2xl">
+    
+    <li class="inline-block mr-6">
+        <a href="https://twitter.com/driesvints" target="_blank" rel="noopener" aria-label="Twitter">
+            <svg class="enlarge w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>        </a>
+    </li>
+    <li class="hidden inline-block mr-6">
+        <a rel="me" href="https://phpc.social/@driesvints" target="_blank" aria-label="Mastodon">
+            <svg class="enlarge w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"></path></svg>        </a>
+    </li>
+    <li class="inline-block">
+        <a href="https://github.com/driesvints" target="_blank" rel="noopener" aria-label="Github">
+            <svg class="enlarge w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>        </a>
+    </li>
+</ul>
+                    </div>
+                </div>
+
+                <div class="content sm:max-w-lg mx-auto text-shadow-lg font-semibold px-6 mt-32 md:mr-0 xl:mr-24">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <svg class="absolute z-0 left-0 bottom-0 block w-full h-8 sm:h-24 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <polygon fill="#f7fafc" points="0,100 100,0 100,100"></polygon>
+    </svg>
+</div>
+
+    <div id="content">
+        <div class="py-10 sm:py-20">
+            <div id="post">
+    <div class="mb-12">
+        <h1 class="font-bold text-4xl mb-6" style="direction: rtl; text-align: right;">
+            بدء العمل مع ملفات الإعدادات (Dotfiles)
+        </h1>
+
+        <p class="block text-xs uppercase text-gray-500" style="direction: rtl; text-align: right;">
+            نُشِر لأول مرة
+            في <strong>7 أبريل 2016</strong>
+            · آخر تحديث في <strong>25 أبريل 2021</strong>
+        </p>
+    </div>
+
+    <p style="direction: rtl; text-align: right;">
+        دعنا نتخيل موقفًا، جهاز الكمبيوتر الخاص بك تعطل. ولا أعني العُطل الكلاسيكي الذي يتطلب ببساطة تصليحه. بل، أعني كارثة الهارد ديسك الكامل التي قد تفقد فيها كل شيء ولن تستطيع استعادته أبدًا. قد تمر بمثل هذا الموقف يومًا ما. وإذا كنت محظوظًا فلن تمر به أبدًا. لكن، الحظ ينفد في النهاية.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        لحسن الحظ، في هذه الأيام، لدينا شيء يُدعى "السحابة ☁️". نحن مطورون، لذلك على الأرجح نكون ذكاء بما فيه الكفاية لحفظ جميع مستنداتنا على Dropbox أو Google Drive أو iCloud أو Github أو أي خدمة تخزين سحابية أخرى. أليس كذلك؟ ... أليس كذلك؟
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        <em>صوت الصراصير</em>
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        على أي حال، لا يمكنني مساعدتك فيما يتعلق بمستنداتك. ليست هذه هي السبب الذي يجعلني أكتب هذا المقال. احفظ مستنداتك في السحابة! ما يمكنني مساعدتك به هو بيئة التطوير الخاصة بك. يا لها من مشكلة عندما تحتاج إلى إعادة إعداد جهاز الكمبيوتر الخاص بك. يبدو أن كل شخص لديه طريقته الخاصة لإعداد الكمبيوتر. كل شخص له طريقته الخاصة. التطبيقات التي نستخدمها، إعدادات بيئة التطوير، الطرفية التي نفضلها، لغات البرمجة التي نعمل بها، الأدوات التي نُفضِّل. كيف يمكننا أن نستعيد هذا الإعداد المحدد كما كان قبل تعطل الكمبيوتر؟
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        هنا تدخل ملفات الإعداد (Dotfiles).
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        📺 <em>هل ترغب في مشاهدة فيديو؟ <a href="https://laracasts.com/series/guest-spotlight/episodes/1">شاهد الفيديو على Laracasts.</a></em>
+    </p>
+    <h2 style="direction: rtl; text-align: right;">لماذا ملفات الإعداد (Dotfiles)؟</h2>
+    <p style="direction: rtl; text-align: right;">
+        ببساطة، ملفات الإعداد (Dotfiles) تحتوي على إعداداتك المفضلة لجهاز الكمبيوتر الخاص بك. عادةً ما تأتي مع إجراءات الإعداد حتى تتمكن من تثبيت كل شيء مرة أخرى بسهولة عندما تحتاج إلى بدء نظام جديد. هم أيضًا مفيدين جدًا لمزامنة التفضيلات عبر أجهزة متعددة.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        قبل بضعة أشهر، اضطررت لإعادة تثبيت جهاز الكمبيوتر الخاص بي عدة مرات. وكان ذلك مهمة شاقة. كان علي أن أعيد تثبيت التطبيقات التي كنت استخدمها، وإعداد بيئة تطويري مرة أخرى بشكل صحيح، وفقدان جميع إعدادات الطرفية والاختصارات. كانت تجربة محبطة جدا وأمر لا يرغب أحد في تك
+
+راره مرة أخرى. لذلك قررت أنني في المرة القادمة التي سأحتاج فيها لإعادة تثبيت جهاز الكمبيوتر الخاص بي، سأكون مستعدا. لن أمر بمثل هذه المحنة مرة أخرى.
+    </p>
+    <h2 style="direction: rtl; text-align: right;">إنشاء ملفات الإعداد الخاصة بي</h2>
+    <p style="direction: rtl; text-align: right;">
+        كنت أعرف عن ملفات الإعداد (Dotfiles) منذ فترة طويلة. رأيت مستودعات مختلفة من أشخاص مختلفين، ولكن كل مستودع بدا مختلفًا تمامًا. السبب في ذلك هو أن ملفات الإعداد (Dotfiles) شخصية للغاية. ليس هناك حلاً عامًا أو إعدادًا واحدًا يناسب الجميع. عند بناء ملفات الإعداد الخاصة بك، ستكتشف أنك ترغب في تنظيم الأمور بالطريقة التي تناسبك. وهذا أمر طبيعي تمامًا. <a href="https://dotfiles.github.io/">استوح ما يلهمك من المستودعات الأخرى</a> واستخدم الأجزاء التي تعمل بالنسبة لك.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        بناء <a href="https://github.com/driesvints/dotfiles">ملفات الإعداد الخاصة بي</a> كان مثل ذلك. انغمست في العديد من المستودعات واكتشفت طرقًا لتعديل إعداداتي أو تنظيم الأمور. دعني أريك كيف نظمت هيكل ملفات الإعداد الخاصة بي.
+    </p>
+    <h3 style="direction: rtl; text-align: right;">تنظيم الأقسام</h3>
+    <p style="direction: rtl; text-align: right;">
+        بدأت بالمستودع الذي يبدأ منه الجميع عندما يبحثون عن مثال جيد لملفات الإعداد (Dotfiles). <a href="https://github.com/holman/dotfiles">ملفات الإعداد لـ زاك هولمان</a> رائعة. أقترح عليك <a href="https://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/">قراءة مدونته الممتازة</a> عن هذا الموضوع.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        ما يستخدمه زاك هو ما يُعرف بتنظيم الأقسام، وهو أنه ينظم أجزاء مختلفة من ملفات الإعداد في مجلدات، حيث يُسند لكل منها موضوع محدد. إعدادات Git تكون في مجلد <code>git/</code>، وسكربتات Ruby في <code>ruby/</code>، وهكذا.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        هذا النهج بدا وكأنه طريقة رائعة لتنظيم الأمور، وفي النهاية، انتهيت بـ <a href="https://github.com/driesvints/dotfiles/tree/7cb1ea6eff77921d16a3376a2172f96425e93181">هذا</a>. كل شيء مرتب ومحفوظ في مجلداته مع الاختصارات وإعدادات المسارات وما إلى ذلك منفصلة.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        الآن، كان لدي ترتيب جيد وإعداد يعمل بشكل جيد لملفات الإعداد الخاصة بي.
+    </p>
+    <h3 style="direction: rtl; text-align: right;">هيكل أبسط</h3>
+    <p style="direction: rtl; text-align: right;">
+        ولكن بعد ذلك، بدأت في التفكير في <em>لماذا</em> أرغب في فصل الأمور كل هذا الشيء. كل مجلد يحتوي على عدد قليل جدا من الملفات وكل ملف يحتوي على عدد قليل من القواعد. لماذا أرغب في فصل كل شيء إذا كان بإمكاني تنظيمه بطريقة أكثر بساطة من خلال تنظيمه على المستوى العلوي؟
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        وهكذا بدأت رحلتي لتبسيط الأمور بشكل
+
+ كبير. وعندما انتهيت، وصلت إلى <a href="https://github.com/driesvints/dotfiles/tree/f6321eed4852578c5c23894dcb22814851efd8d1">هذا</a>. كما يمكنك رؤية، هو أكثر نظافة من الإصدار السابق. كل شيء مرتب في عدد قليل من الملفات الكبيرة. وهذا يعني أنها أكثر قابلية للصيانة وأسهل للفهم.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        في النهاية، تبين أن هذا كان الاختيار الصحيح. أدوات مثل Mackup و Brewfile ساعدت كثيرا في تقليل عدد الملفات التي كنت بحاجة إليها. دعنا نلقي نظرة على النتيجة النهائية.
+    </p>
+    <h2 style="direction: rtl; text-align: right;">الأجزاء المختلفة</h2>
+    <h3 style="direction: rtl; text-align: right;">تفضيلات macOS</h3>
+    <p style="direction: rtl; text-align: right;">
+        نظام التشغيل الرئيسي الذي أفضله هو macOS. بصفتي من المعجبين بـ Apple، أستمتع كثيرًا بالطريقة التي يتم بها مزامنة جميع بياناتي عبر أجهزتي من خلال iCloud. لا أرغب في التخلي عنها لأي نظام آخر في الوقت الحالي. على الرغم من أن iCloud رائعة، إلا أنها لا تزامن تفضيلات macOS عبر جهازي الماك. لدي ماك بوك في المنزل وماك بوك في العمل، لذلك إذا قمت بتغيير إعداد على أحد الماكات، فلن يطبق ذلك تلقائيًا على الآخر. لحسن الحظ لدينا ملف إعداد (Dotfile) يساعد في هذا الأمر.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        <a href="https://github.com/mathiasbynens/dotfiles">ملفات الإعداد لـ ماثياس بيننس</a> من بين أكثر الملفات شعبية. يحتوي ملف إعداد macOS <a href="https://github.com/mathiasbynens/dotfiles/blob/master/.macos"><code>.macos</code></a> على مجموعة من تفضيلات macOS وهو شيء يرغب فيه الجميع عند العمل مع macOS. الآن يسهل مزامنة تفضيلاتك. ما عليك سوى جلب أحدث ارتباط من ملفات الإعداد الخاصة بك، وتشغيل <code>source .macos</code> وستكون محدثًا.
+    </p>
+    <h3 style="direction: rtl; text-align: right;">Homebrew</h3>
+    <p style="direction: rtl; text-align: right;">
+        عند تشغيل macOS، Homebrew أمر ضروري. يساعدك على تثبيت الحزم والأدوات بسهولة من خلال واجهة السطر. يجب أن يكون Homebrew أول شيء تقوم بتثبيته عند إعداد ماك جديد.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        يمكن لـ Homebrew أيضًا المساعدة في تثبيت تطبيقاتك. لن تحتاج بعد الآن للقلق بشأن تنزيل وتثبيت الحزم والأدوات يدويًا. يمكن لـ Homebrew حتى تثبيت الخطوط الخاصة بك. لا يزال يتعين تثبيت تطبيقات من متجر التطبيقات يدويًا أو باستخدام أداة سطر الأوامر الرائعة <a href="https://github.com/mas-cli/mas">mas</a>.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        لجلب كل ذلك معًا في ملفات الإعداد الخاصة بك، سترغب على الأرجح في اعتم
+
+اد ملف <a href="https://github.com/driesvints/dotfiles/blob/master/Brewfile"><code>Brewfile</code></a> الذي يحتوي على قائمة بالحزم والأدوات التي ترغب في تثبيتها. بعد إنشاء <code>Brewfile</code>، يمكنك تشغيل <code>brew bundle</code> لتثبيت كل شيء.
+    </p>
+    <h3 style="direction: rtl; text-align: right;">ملفات الإعداد</h3>
+    <p style="direction: rtl; text-align: right;">
+        الآن أنك قد قمت بتثبيت جميع الحزم والأدوات الأساسية، سترغب على الأرجح في تحديد تفضيلاتك وإعداداتك. من الأفضل أن تفعل ذلك في ملف إعداد. قد ترغب في الحفاظ على ملف إعداد لـ كل تطبيق. يمكن أن يكون لكل تطبيق ملف إعداد بسيط يعيد ضبط التطبيق وإعداداته بحيث يبدأ على الفور بعد تثبيته. سترى في الملفات المرفقة أن لدي ملف إعداد لـ Git، و Vim وغيرها.
+    </p>
+    <h3 style="direction: rtl; text-align: right;">iCloud</h3>
+    <p style="direction: rtl; text-align: right;">
+        كل هذا جميل. ولكن لا يمكنك دائمًا تثبيت التطبيقات وإعداداتها اليدويًا. يمكنك القيام ببعض الأشياء عن طريق Homebrew، ولكن لا يمكنك تثبيت كل شيء من خلاله. لحسن الحظ هناك شيء آخر أنتجته تقنية Apple للمساعدة في هذا الأمر.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        يُدعى Mackup ويساعد في مزامنة التفضيلات الخاصة بك من iCloud. يمكن لـ Mackup أن يأخذ جميع إعداداتك من تطبيقات النظام وتطبيقات طرف ثالث ويُحفظها في المجلدات التي تُحددها. بعد ذلك، يمكنك أن تعيد إعداد كل شيء في جهاز جديد بسهولة.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        يمكنك البدء بتثبيته عن طريق Homebrew:
+    </p>
+    <pre style="direction: rtl; text-align: right;">
+<code class="language-shell" style="direction: ltr; text-align: left;">brew install mackup</code>
+    </pre>
+    <p style="direction: rtl; text-align: right;">
+        بعد ذلك، يمكنك إعداد Mackup للعمل مع iCloud وتحديد التطبيقات التي ترغب في مزامنة إعداداتها. يمكنك إعداد Mackup باستخدام الأوامر التالية:
+    </p>
+    <pre style="direction: rtl; text-align: right;">
+<code class="language-shell" style="direction: ltr; text-align: left;">mackup backup # To backup your configuration
+mackup restore # To restore your configuration</code>
+    </pre>
+    <p style="direction: rtl; text-align: right;">
+        أيضًا، لا تنسَ أن تضيف <code>.mackup.cfg</code> الخاص بك إلى مستودع ملفات الإعداد الخاصة بك.
+    </p>
+    <h3 style="direction: rtl; text-align: right;">استخدام ملفات الإعداد الخاصة بك</h3>
+    <p style="direction: rtl; text-align: right;">
+        الآن وبعد إعداد ملفات الإعداد الخاصة بك، يمكنك البدء في استخدامها. عند تحميل نظام جديد، قم بتنزيل مستودع ملفات الإعداد الخاصة بك من Github:
+    </p>
+    <pre style="direction: rtl; text-align: right;">
+<code class="language-shell" style="direction: ltr; text-align: left;">git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./install.sh</code>
+    </pre>
+    <p style="direction: rtl; text-align: right;">
+        ستقوم الخطوة الأخيرة بنسخ الملفات المحددة إلى المواقع الصحيحة. إذا كنت ترغب في تجاوز ملف معين (مثل <code>.gitignore</code>)، يمكنك تحديده في الملف <code>install.sh</code>.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        في النهاية، يجب أن تكون مستعدا بالكامل للبدء في العمل. ستكون بيئة التطوير الخاصة بك معك في كل مكان. ستكون مطورًا أفضل بكثير في المستقبل عندما تعرف أنك ستبدأ دائمًا ب
+
+نفس البيئة الرائعة والمحسنة التي تعمل بها.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        أعتقد أنني أفضل الآن. بالطبع، قد تحتاج إلى إجراء بعض التحسينات والتغييرات بمرور الوقت. كما تتطور متطلباتي، قد ترغب في تحديث ملفات الإعداد الخاصة بك أيضًا. لكن هذا جيد. هذه هي جمال ملفات الإعداد - إنها تنمو وتتطور معك.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        أتمنى أن تكون قد استفدت من مشاركة تجربتي في إعداد بيئة التطوير الخاصة بي. أعتقد أن الأمر مفيد بالنسبة لأي مطور يعمل على تثبيت بيئة موحدة ومحسنة عبر عدة أجهزة. قد تكون ملفات الإعداد خاصة بك مختلفة، ولكن الفكرة العامة متشابهة.
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        إذا كان لديك أي أسئلة، فلا تتردد في طرحها. أنا هنا للمساعدة. استمتع ببناء بيئتك المثالية!
+    </p>
+    <p style="direction: rtl; text-align: right;">
+        تحياتي،<br>
+        إسلام</p>
+</div>
+</div>
+
+            <div class="share mx-auto max-w-md mt-10 sm:mt-16 px-6 text-2xl text-center">
+                <p class="text-sm italic mb-4">
+                    Like what you read? Feel free to share!
+                    Make sure to <a href="https://twitter.com/driesvints" target="_blank" rel="noopener">follow me on Twitter</a> to know when my next post is out.
+                </p>
+
+                <p class="share-links mb-6">
+                    <a target="_blank" rel="noopener" aria-label="Share on Twitter" href="https://twitter.com/share?text=%22Getting+Started+with+Dotfiles%22+by+%40driesvints+-+&amp;url=https%3A%2F%2Fdriesvints.com%2Fblog%2Fgetting-started-with-dotfiles">
+                        <svg class="inline w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg></a>
+
+                    <a class="ml-4" target="_blank" rel="noopener" aria-label="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdriesvints.com%2Fblog%2Fgetting-started-with-dotfiles&amp;quote=%22Getting+Started+with+Dotfiles%22+by+Dries+Vints+-+">
+                        <svg class="inline w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg></a>
+
+                    <a class="ml-4" target="_blank" rel="noopener" aria-label="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fdriesvints.com%2Fblog%2Fgetting-started-with-dotfiles&amp;title=%22Getting+Started+with+Dotfiles%22+by+Dries+Vints+-+">
+                        <svg class="inline w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg></a>
+                </p>
+            </div>
+        </div>
+
+        <div id="about" class="relative bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+        <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+            <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <polygon points="50,0 100,0 50,100 0,100"></polygon>
+            </svg>
+
+            <div class="pt-1"></div>
+
+            <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                <div class="sm:text-center lg:text-left">
+                    <h2 class="mt-6 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl md:text-4xl">
+                        About me
+                    </h2>
+
+                    <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        I'm a software engineer from Belgium. I work as one of the core team members of <a href="https://laravel.com/">Laravel</a>, the popular PHP framework.
+                    </p>
+
+                    <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        I'm also the creator of <a href="https://eventy.io/">Eventy</a>, a platform that connects the dots between user groups, speakers, conferences and attendees.
+                    </p>
+
+                    <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        My passions are <a href="https://github.com/driesvints">open-source</a>, growing communities, and building products that people love.
+                    </p>
+
+                    <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        Together with my buddies <a href="https://twitter.com/riasvdv">Rias</a> and <a href="https://twitter.com/freekmurze">Freek</a> I organize organise <a href="https://fullstackeurope.com/">Full Stack Europe</a>, the conference for the whole team.
+                    </p>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <img class="h-56 w-full object-cover object-top sm:h-72 md:h-96 lg:w-full lg:h-full" src="./Getting Started with Dotfiles _ Dries Vints_files/about.jpeg" alt="">
+    </div>
+</div>
+    </div>
+</div>
+
+<div class="border-t border-gray-200">
+    <div class="max-w-6xl mx-auto text-sm text-gray-400 sm:flex px-6 py-8">
+        <div class="sm:flex-1 text-center sm:text-left mb-6 sm:mb-0 sm:mt-3">
+            © Dries Vints
+        </div>
+        <div class="sm:flex-1 text-center sm:text-right">
+            <ul class="text-2xl">
+    
+    <li class="inline-block mr-6">
+        <a href="https://twitter.com/driesvints" target="_blank" rel="noopener" aria-label="Twitter">
+            <svg class="enlarge w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>        </a>
+    </li>
+    <li class="hidden inline-block mr-6">
+        <a rel="me" href="https://phpc.social/@driesvints" target="_blank" aria-label="Mastodon">
+            <svg class="enlarge w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"></path></svg>        </a>
+    </li>
+    <li class="inline-block">
+        <a href="https://github.com/driesvints" target="_blank" rel="noopener" aria-label="Github">
+            <svg class="enlarge w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>        </a>
+    </li>
+</ul>
+        </div>
+    </div>
+</div>
+<textarea id="BFI_DATA" style="width: 1px; height: 1px; display: none;"></textarea><title> </title><div id="WidgetFloaterPanels" translate="no" style="display: none; text-align: left; direction: ltr; visibility: hidden;" class="LTRStyle"> <div id="WidgetFloater" style="display: none" onmouseover="Microsoft.Translator.OnMouseOverFloater()" onmouseout="Microsoft.Translator.OnMouseOutFloater()"> <div id="WidgetLogoPanel"> <span id="WidgetTranslateWithSpan"><span>TRANSLATE with </span><img id="FloaterLogo"></span> <span id="WidgetCloseButton" title="Exit Translation" onclick="Microsoft.Translator.FloaterOnClose()">x</span></div> <div id="LanguageMenuPanel"> <div class="DDStyle_outer"><input name="LanguageMenu_svid" type="text" id="LanguageMenu_svid" style="display:none;" autocomplete="on" value="en" onclick="this.select()"> <input name="LanguageMenu_textid" type="text" id="LanguageMenu_textid" style="display:none;" autocomplete="on" onclick="this.select()"> <span onselectstart="return false" tabindex="0" class="DDStyle" id="__LanguageMenu_header" onclick="return LanguageMenu &amp;&amp; !LanguageMenu.Show(&#39;__LanguageMenu_popup&#39;, event);" onkeydown="return LanguageMenu &amp;&amp; !LanguageMenu.Show(&#39;__LanguageMenu_popup&#39;, event);">English</span> <div style="position:relative;text-align:left;left:0;"><div style="position:absolute;width:;left:0px;"><div class="DDStyle" style="display:none;" id="__LanguageMenu_popup"> <table id="LanguageMenu" border="0"> <tbody><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;ar&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#ar">Arabic</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;he&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#he">Hebrew</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;pl&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#pl">Polish</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;bg&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#bg">Bulgarian</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;hi&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#hi">Hindi</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;pt&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#pt">Portuguese</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;ca&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#ca">Catalan</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;mww&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#mww">Hmong Daw</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;ro&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#ro">Romanian</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;zh-CHS&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#zh-CHS">Chinese Simplified</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;hu&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#hu">Hungarian</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;ru&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#ru">Russian</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;zh-CHT&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#zh-CHT">Chinese Traditional</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;id&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#id">Indonesian</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;sk&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#sk">Slovak</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;cs&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#cs">Czech</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;it&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#it">Italian</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;sl&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#sl">Slovenian</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;da&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#da">Danish</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;ja&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#ja">Japanese</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;es&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#es">Spanish</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;nl&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#nl">Dutch</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;tlh&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#tlh">Klingon</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;sv&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#sv">Swedish</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;en&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#en">English</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;ko&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#ko">Korean</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;th&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#th">Thai</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;et&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#et">Estonian</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;lv&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#lv">Latvian</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;tr&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#tr">Turkish</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;fi&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#fi">Finnish</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;lt&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#lt">Lithuanian</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;uk&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#uk">Ukrainian</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;fr&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#fr">French</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;ms&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#ms">Malay</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;ur&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#ur">Urdu</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;de&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#de">German</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;mt&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#mt">Maltese</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;vi&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#vi">Vietnamese</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;el&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#el">Greek</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;no&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#no">Norwegian</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;cy&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#cy">Welsh</a></td> </tr><tr> <td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;ht&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#ht">Haitian Creole</a></td><td><a tabindex="-1" onclick="return LanguageMenu.onclick(&#39;fa&#39;);" ondragstart="LanguageMenu.ondragstart(event);" href="https://driesvints.com/blog/getting-started-with-dotfiles#fa">Persian</a></td><td></td> </tr> </tbody></table> <img alt="" style="height:7px;width:17px;border-width:0px;left:20px;"> </div></div></div></div> <script type="text/javascript"> var LanguageMenu; var LanguageMenu_keys=["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fi","fr","de","el","ht","he","hi","mww","hu","id","it","ja","tlh","ko","lv","lt","ms","mt","no","fa","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi","cy"]; var LanguageMenu_values=["Arabic","Bulgarian","Catalan","Chinese Simplified","Chinese Traditional","Czech","Danish","Dutch","English","Estonian","Finnish","French","German","Greek","Haitian Creole","Hebrew","Hindi","Hmong Daw","Hungarian","Indonesian","Italian","Japanese","Klingon","Korean","Latvian","Lithuanian","Malay","Maltese","Norwegian","Persian","Polish","Portuguese","Romanian","Russian","Slovak","Slovenian","Spanish","Swedish","Thai","Turkish","Ukrainian","Urdu","Vietnamese","Welsh"]; var LanguageMenu_callback=function(){ }; var LanguageMenu_popupid='__LanguageMenu_popup'; </script> </div> <div id="CTFLinksPanel"> <span id="ExternalLinksPanel"><a id="HelpLink" title="Help" target="_blank" href="https://go.microsoft.com/?linkid=9722454"> <img id="HelpImg"></a> <a id="EmbedLink" href="javascript:Microsoft.Translator.FloaterShowEmbed()" title="Get this widget for your own site"> <img id="EmbedImg"></a> <a id="ShareLink" title="Share translated page with friends" href="javascript:Microsoft.Translator.FloaterShowSharePanel()"> <img id="ShareImg"></a> </span> </div> <div id="FloaterProgressBar"> <span id="ProgressFill"></span> </div> </div> <div id="WidgetFloaterCollapsed" style="display: none" onmouseover="Microsoft.Translator.OnMouseOverFloater()"> <span>TRANSLATE with </span><img id="CollapsedLogoImg"></div> <div id="FloaterSharePanel" style="display: none"> <div id="ShareTextDiv"> <span id="ShareTextSpan"> COPY THE URL BELOW </span> </div> <div id="ShareTextboxDiv"> <input name="ShareTextbox" type="text" id="ShareTextbox" readonly="readonly" onclick="this.select()"> <!--a id="TwitterLink" title="Share on Twitter"> <img id="TwitterImg" /></a> <a-- id="FacebookLink" title="Share on Facebook"> <img id="FacebookImg" /></a--> <a id="EmailLink" title="Email this translation"> <img id="EmailImg"></a> </div> <div id="ShareFooter"> <span id="ShareHelpSpan"><a id="ShareHelpLink"> <img id="ShareHelpImg"></a></span> <span id="ShareBackSpan"><a id="ShareBack" href="javascript:Microsoft.Translator.FloaterOnShareBackClick()" title="Back To Translation"> Back</a></span> </div> <input name="EmailSubject" type="hidden" id="EmailSubject" value="Check out this page in {0} translated from {1}"> <input name="EmailBody" type="hidden" id="EmailBody" value="Translated: {0}%0d%0aOriginal: {1}%0d%0a%0d%0aAutomatic translation powered by Microsoft® Translator%0d%0ahttp://www.bing.com/translator?ref=MSTWidget"> <input type="hidden" id="ShareHelpText" value="This link allows visitors to launch this page and automatically translate it to {0}."> </div> <div id="FloaterEmbed" style="display: none"> <div id="EmbedTextDiv"> <span id="EmbedTextSpan">EMBED THE SNIPPET BELOW IN YOUR SITE</span> <a id="EmbedHelpLink" title="Copy this code and place it into your HTML."> <img id="EmbedHelpImg"></a> </div> <div id="EmbedTextboxDiv"> <input name="EmbedSnippetTextBox" type="text" id="EmbedSnippetTextBox" readonly="readonly" value="&lt;div id=&#39;MicrosoftTranslatorWidget&#39; class=&#39;Dark&#39; style=&#39;color:white;background-color:#555555&#39;&gt;&lt;/div&gt;&lt;script type=&#39;text/javascript&#39;&gt;setTimeout(function(){var s=document.createElement(&#39;script&#39;);s.type=&#39;text/javascript&#39;;s.charset=&#39;UTF-8&#39;;s.src=((location &amp;&amp; location.href &amp;&amp; location.href.indexOf(&#39;https&#39;) == 0)?&#39;https://ssl.microsofttranslator.com&#39;:&#39;http://www.microsofttranslator.com&#39;)+&#39;/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**&amp;ctf=true&amp;ui=true&amp;settings=manual&amp;from=en&#39;;var p=document.getElementsByTagName(&#39;head&#39;)[0]||document.documentElement;p.insertBefore(s,p.firstChild); },0);&lt;/script&gt;" onclick="this.select()"> </div> <div id="EmbedNoticeDiv"><span id="EmbedNoticeSpan">Enable collaborative features and customize widget: <a href="http://www.bing.com/widget/translator" target="_blank">Bing Webmaster Portal</a></span></div> <div id="EmbedFooterDiv"><span id="EmbedBackSpan"><a href="javascript:Microsoft.Translator.FloaterOnEmbedBackClick()" title="Back To Translation">Back</a></span></div> </div> <script type="text/javascript"> var intervalId = setInterval(function () { if (MtPopUpList) { LanguageMenu = new MtPopUpList(); var langMenu = document.getElementById(LanguageMenu_popupid); var origLangDiv = document.createElement("div"); origLangDiv.id = "OriginalLanguageDiv"; origLangDiv.innerHTML = "<span id='OriginalTextSpan'>ORIGINAL: </span><span id='OriginalLanguageSpan'></span>"; langMenu.appendChild(origLangDiv); LanguageMenu.Init('LanguageMenu', LanguageMenu_keys, LanguageMenu_values, LanguageMenu_callback, LanguageMenu_popupid); window["LanguageMenu"] = LanguageMenu; clearInterval(intervalId); } }, 1); </script> </div><div id="suspender_tab_manager"><template shadowrootmode="open"><div><!----><style>@import url(chrome-extension://laameccjpleogmfhilmffpdbiibgbekf/assets/tab-manager.css);</style></div></template></div><div class="TnITTtw-fp-collapsed-button" style="display: block;"></div><div class="TnITTtw-mate-fp-bar TnITTtw-dark-mode" translate="no" style="z-index: 11; width: 0px; height: 0px; opacity: 0; display: none;">    <div class="TnITTtw-hide-fp-bar" style="display: none;"></div>    <div class="TnITTtw-current-page-lang" style="display: none;">This page is in English</div>    <div class="TnITTtw-cta-button-layout" style="display: none;">        <div class="TnITTtw-spinner">            <div class="TnITTtw-bounce1"></div>            <div class="TnITTtw-bounce2"></div>            <div class="TnITTtw-bounce3"></div>        </div>        <div class="TnITTtw-mw-button TnITTtw-fp-translate TnITTtw-high-cta" style="display: none;">Translate to Arabic</div>    </div>    <div class="TnITTtw-change-language TnITTtw-select" data-for-serial="3" style="display: none;"></div>    <div class="TnITTtw-stop-fp"></div>    <div class="TnITTtw-toggle-iphone-settings" style="display: none;"></div>    <div class="TnITTtw-ui_selector" style="display: none;">        <div class="TnITTtw-options-arrow" style="display: none;"></div>        <div class="TnITTtw-options TnITTtw-opt-3 TnITTtw-standalone" data-serial="3" style="display: none; z-index: 998;">            <div class="TnITTtw-dd-search">                <input class="TnITTtw-dd-input" type="text" data-dir="to" placeholder="Search" data-width="NaN">            </div>            <div id="selVisibleScroll-3">                <div id="selEntireScroll-3">                    <div class="TnITTtw-inner-options-layout">                        <ul class="TnITTtw-list"><li class="lang-af TnITTtw-option" index="1"><span id="lang-af" val="af" class="lang-af">Afrikaans</span></li><li class="lang-sq TnITTtw-option" index="2"><span id="lang-sq" val="sq" class="lang-sq">Albanian</span></li><li class="lang-am TnITTtw-option" index="3"><span id="lang-am" val="am" class="lang-am">Amharic</span></li><li class="lang-ar TnITTtw-option_selected" index="4"><span id="lang-ar" val="ar" class="lang-ar">Arabic</span></li><li class="lang-hy TnITTtw-option" index="5"><span id="lang-hy" val="hy" class="lang-hy">Armenian</span></li><li class="lang-az TnITTtw-option" index="6"><span id="lang-az" val="az" class="lang-az">Azerbaijani</span></li><li class="lang-bn TnITTtw-option" index="7"><span id="lang-bn" val="bn" class="lang-bn">Bengali</span></li><li class="lang-bg TnITTtw-option" index="8"><span id="lang-bg" val="bg" class="lang-bg">Bulgarian</span></li><li class="lang-ca TnITTtw-option" index="9"><span id="lang-ca" val="ca" class="lang-ca">Catalan</span></li><li class="lang-hr TnITTtw-option" index="10"><span id="lang-hr" val="hr" class="lang-hr">Croatian</span></li><li class="lang-cs TnITTtw-option" index="11"><span id="lang-cs" val="cs" class="lang-cs">Czech</span></li><li class="lang-da TnITTtw-option" index="12"><span id="lang-da" val="da" class="lang-da">Danish</span></li><li class="lang-nl TnITTtw-option" index="13"><span id="lang-nl" val="nl" class="lang-nl">Dutch</span></li><li class="lang-en TnITTtw-option" index="14"><span id="lang-en" val="en" class="lang-en">English</span></li><li class="lang-et TnITTtw-option" index="15"><span id="lang-et" val="et" class="lang-et">Estonian</span></li><li class="lang-fi TnITTtw-option" index="16"><span id="lang-fi" val="fi" class="lang-fi">Finnish</span></li><li class="lang-fr TnITTtw-option" index="17"><span id="lang-fr" val="fr" class="lang-fr">French</span></li><li class="lang-de TnITTtw-option" index="18"><span id="lang-de" val="de" class="lang-de">German</span></li><li class="lang-el TnITTtw-option" index="19"><span id="lang-el" val="el" class="lang-el">Greek</span></li><li class="lang-gu TnITTtw-option" index="20"><span id="lang-gu" val="gu" class="lang-gu">Gujarati</span></li><li class="lang-ht TnITTtw-option" index="21"><span id="lang-ht" val="ht" class="lang-ht">Haitian Creole</span></li><li class="lang-iw TnITTtw-option" index="22"><span id="lang-iw" val="iw" class="lang-iw">Hebrew</span></li><li class="lang-hi TnITTtw-option" index="23"><span id="lang-hi" val="hi" class="lang-hi">Hindi</span></li><li class="lang-hu TnITTtw-option" index="24"><span id="lang-hu" val="hu" class="lang-hu">Hungarian</span></li><li class="lang-is TnITTtw-option" index="25"><span id="lang-is" val="is" class="lang-is">Icelandic</span></li><li class="lang-id TnITTtw-option" index="26"><span id="lang-id" val="id" class="lang-id">Indonesian</span></li><li class="lang-it TnITTtw-option" index="27"><span id="lang-it" val="it" class="lang-it">Italian</span></li><li class="lang-ja TnITTtw-option" index="28"><span id="lang-ja" val="ja" class="lang-ja">Japanese</span></li><li class="lang-kn TnITTtw-option" index="29"><span id="lang-kn" val="kn" class="lang-kn">Kannada</span></li><li class="lang-kk TnITTtw-option" index="30"><span id="lang-kk" val="kk" class="lang-kk">Kazakh</span></li><li class="lang-km TnITTtw-option" index="31"><span id="lang-km" val="km" class="lang-km">Khmer</span></li><li class="lang-ko TnITTtw-option" index="32"><span id="lang-ko" val="ko" class="lang-ko">Korean</span></li><li class="lang-ku TnITTtw-option" index="33"><span id="lang-ku" val="ku" class="lang-ku">Kurdish (Kurmanji)</span></li><li class="lang-lo TnITTtw-option" index="34"><span id="lang-lo" val="lo" class="lang-lo">Lao</span></li><li class="lang-lv TnITTtw-option" index="35"><span id="lang-lv" val="lv" class="lang-lv">Latvian</span></li><li class="lang-lt TnITTtw-option" index="36"><span id="lang-lt" val="lt" class="lang-lt">Lithuanian</span></li><li class="lang-mg TnITTtw-option" index="37"><span id="lang-mg" val="mg" class="lang-mg">Malagasy</span></li><li class="lang-ms TnITTtw-option" index="38"><span id="lang-ms" val="ms" class="lang-ms">Malay</span></li><li class="lang-ml TnITTtw-option" index="39"><span id="lang-ml" val="ml" class="lang-ml">Malayalam</span></li><li class="lang-mt TnITTtw-option" index="40"><span id="lang-mt" val="mt" class="lang-mt">Maltese</span></li><li class="lang-mi TnITTtw-option" index="41"><span id="lang-mi" val="mi" class="lang-mi">Maori</span></li><li class="lang-mr TnITTtw-option" index="42"><span id="lang-mr" val="mr" class="lang-mr">Marathi</span></li><li class="lang-my TnITTtw-option" index="43"><span id="lang-my" val="my" class="lang-my">Myanmar (Burmese)</span></li><li class="lang-ne TnITTtw-option" index="44"><span id="lang-ne" val="ne" class="lang-ne">Nepali</span></li><li class="lang-no TnITTtw-option" index="45"><span id="lang-no" val="no" class="lang-no">Norwegian</span></li><li class="lang-ps TnITTtw-option" index="46"><span id="lang-ps" val="ps" class="lang-ps">Pashto</span></li><li class="lang-fa TnITTtw-option" index="47"><span id="lang-fa" val="fa" class="lang-fa">Persian</span></li><li class="lang-pl TnITTtw-option" index="48"><span id="lang-pl" val="pl" class="lang-pl">Polish</span></li><li class="lang-pt TnITTtw-option" index="49"><span id="lang-pt" val="pt" class="lang-pt">Portuguese</span></li><li class="lang-pa TnITTtw-option" index="50"><span id="lang-pa" val="pa" class="lang-pa">Punjabi</span></li><li class="lang-ro TnITTtw-option" index="51"><span id="lang-ro" val="ro" class="lang-ro">Romanian</span></li><li class="lang-ru TnITTtw-option" index="52"><span id="lang-ru" val="ru" class="lang-ru">Russian</span></li><li class="lang-sm TnITTtw-option" index="53"><span id="lang-sm" val="sm" class="lang-sm">Samoan</span></li><li class="lang-zh-CN TnITTtw-option" index="54"><span id="lang-zh-CN" val="zh-CN" class="lang-zh-CN">Simplified Chinese</span></li><li class="lang-sk TnITTtw-option" index="55"><span id="lang-sk" val="sk" class="lang-sk">Slovak</span></li><li class="lang-sl TnITTtw-option" index="56"><span id="lang-sl" val="sl" class="lang-sl">Slovenian</span></li><li class="lang-es TnITTtw-option" index="57"><span id="lang-es" val="es" class="lang-es">Spanish</span></li><li class="lang-sv TnITTtw-option" index="58"><span id="lang-sv" val="sv" class="lang-sv">Swedish</span></li><li class="lang-ta TnITTtw-option" index="59"><span id="lang-ta" val="ta" class="lang-ta">Tamil</span></li><li class="lang-te TnITTtw-option" index="60"><span id="lang-te" val="te" class="lang-te">Telugu</span></li><li class="lang-th TnITTtw-option" index="61"><span id="lang-th" val="th" class="lang-th">Thai</span></li><li class="lang-zh-TW TnITTtw-option" index="62"><span id="lang-zh-TW" val="zh-TW" class="lang-zh-TW">Traditional Chinese</span></li><li class="lang-tr TnITTtw-option" index="63"><span id="lang-tr" val="tr" class="lang-tr">Turkish</span></li><li class="lang-uk TnITTtw-option" index="64"><span id="lang-uk" val="uk" class="lang-uk">Ukrainian</span></li><li class="lang-ur TnITTtw-option" index="65"><span id="lang-ur" val="ur" class="lang-ur">Urdu</span></li><li class="lang-vi TnITTtw-option" index="66"><span id="lang-vi" val="vi" class="lang-vi">Vietnamese</span></li><li class="lang-cy TnITTtw-option" index="67"><span id="lang-cy" val="cy" class="lang-cy">Welsh</span></li></ul>                    </div>                </div>                <div id="sel-scrollbar-3">                    <div id="sel-track-3">                        <div id="sel-dragBar-3"></div>                    </div>                </div>            </div>        </div>    </div>    <div class="TnITTtw-fp-options" style="display: none;">        <input type="checkbox" id="TnITTtw-always-translate" style="display: none;"><label for="TnITTtw-always-translate" class="TnITTtw-always-translate-label" style="display: none;"><span class="TnITTtw-always-translate-inner-label" style="max-width: 297px; display: none;">Always translate English to Arabic</span></label>        <br style="display: none;">        <input type="checkbox" id="TnITTtw-never-translate-lang" style="display: none;"><label for="TnITTtw-never-translate-lang" class="TnITTtw-never-translate-lang-label" style="display: none;">Never translate English</label>        <br style="display: none;">        <input type="checkbox" id="TnITTtw-never-translate-site" style="display: none;"><label for="TnITTtw-never-translate-site" class="TnITTtw-never-translate-site-label" style="display: none;">Never translate driesvints.com</label>    </div></div></body></html>
